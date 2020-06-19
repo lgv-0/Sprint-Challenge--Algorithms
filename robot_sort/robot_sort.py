@@ -96,9 +96,22 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
-
+        self.swap_item()
+        for x in range(0,len(self._list)):
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item()==-1:
+                    self.swap_item()   
+            if self.compare_item()==1:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+            while self.can_move_left():
+                self.move_left()
+                if self.compare_item()==1:
+                    self.swap_item()
+        self.swap_item()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
